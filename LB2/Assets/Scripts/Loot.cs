@@ -19,6 +19,11 @@ namespace LB2
             // else AddToInventory
         }
 
+        protected override void Interact()
+        {
+            //Взаємодія
+        }
+
         private void ChangeGold(int count)
         {
             Gold += count;

@@ -25,6 +25,11 @@ namespace LB2
             // Attack()
         }
 
+        protected override void Interact()
+        {
+            //Взаємодія
+        }
+
         private void Attack()
         {
             // check attack radius

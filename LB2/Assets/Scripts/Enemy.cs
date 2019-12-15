@@ -31,15 +31,20 @@ namespace LB2
             }
         }
 
+        protected override void Interact()
+        {
+            //Взаємодія
+        }
+
 
         public void GetDamage()
         {
-            if (live > 0)
-                live--;
+            if (liveEnemy > 0)
+                liveEnemy--;
             else Die();
         }
 
-        protected virtual void Die()
+        private void Die()
         {
             Destroy(gameObject);
         }
