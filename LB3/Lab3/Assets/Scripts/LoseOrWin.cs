@@ -15,7 +15,6 @@ public class LoseOrWin : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(loseOrWin);
         text.text = loseOrWin;
     }
 }

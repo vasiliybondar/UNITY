@@ -15,6 +15,7 @@ public abstract class Attack : MonoBehaviour
     [SerializeField] protected Image UIHP;
 
     protected bool isplayerMove;
+    private bool canAttack = true;
 
     public float HP
     {
@@ -27,12 +28,28 @@ public abstract class Attack : MonoBehaviour
         get { return damage; }
     }
 
+    public bool CanAttack
+    {
+        get { return canAttack; }
+    }
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         enemy = GameObject.FindGameObjectWithTag("Enemy");
     }
+
+    private void FixedUpdate()
+    {
+        StartCoroutine(ChangeCanAttack());
+    }
+
+    protected IEnumerator ChangeCanAttack()
+    {
+        yield return new WaitForSeconds(2);
+        canAttack = !canAttack; 
+    }
+
 
     protected virtual void BringDamage() {}
 
@@ -49,7 +66,7 @@ public abstract class Attack : MonoBehaviour
 
     protected virtual void Die(GameObject gameObject)
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(0);
         if(gameObject.tag == "Player")
         {
             LoseOrWin.loseOrWin = "You lose(";

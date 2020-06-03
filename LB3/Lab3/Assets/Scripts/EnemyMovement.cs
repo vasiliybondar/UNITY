@@ -25,12 +25,6 @@ public class EnemyMovement : Unit
     }
 
 
-    public override void StartEndMove()
-    {
-        StartCoroutine(CoroutineEndMove());
-    }
-
-
     protected override void EndMove()
     {
         if (!target.GetComponent<Movement>().IsPlayerMove)
@@ -44,12 +38,6 @@ public class EnemyMovement : Unit
         }
     }
 
-
-    IEnumerator CoroutineEndMove()
-    {
-        yield return new WaitForSeconds(3);
-        EndMove();
-    }
 
     private void OnCollisionExit(Collision collision)
     {     

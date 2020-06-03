@@ -51,7 +51,7 @@ public class Movement : Unit
             if (Input.GetMouseButtonUp(0))
             {
                 fence = 0;
-                GetComponent<PlayerAttack>().IsPlayerAttack = true;
+                GetComponent<AttackController>().IsPlayerAttack = true;
                 Move();
             }
         }
@@ -68,14 +68,10 @@ public class Movement : Unit
         _ = rb.velocity != Vector3.zero ? CanPlayerMove = false : CanPlayerMove = true;
     }
 
-    public override void StartEndMove()
-    {
-        StartCoroutine(CoroutineEndMove());
-    }
 
     protected override void EndMove()
     {
-        if (isPlayerMove && GetComponent<PlayerAttack>().IsPlayerAttack == true)
+        if (isPlayerMove && GetComponent<AttackController>().IsPlayerAttack == true)
         {
             fence = 0;
 
@@ -84,14 +80,8 @@ public class Movement : Unit
             
             joystickUI.SetActive(false);
             IsPlayerMove = false;
-            GetComponent<PlayerAttack>().IsPlayerAttack = false;
+            GetComponent<AttackController>().IsPlayerAttack = false;
         }
-    }
-
-    public IEnumerator CoroutineEndMove()
-    {
-        yield return new WaitForSeconds(3);
-        EndMove();
     }
 
 

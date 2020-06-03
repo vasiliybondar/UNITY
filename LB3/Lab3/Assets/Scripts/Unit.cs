@@ -13,8 +13,19 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual void NextMove() { }
 
-    public virtual void StartEndMove() { }
+    public virtual void StartEndMove()
+    {
+        StartCoroutine(CoroutineEndMove());
+    }
+
+    protected IEnumerator CoroutineEndMove()
+    {
+        yield return new WaitForSeconds(3);
+        EndMove();
+    }
 
     protected virtual void EndMove() { }
+
+
 
 }
